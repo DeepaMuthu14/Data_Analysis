@@ -1,0 +1,91 @@
+import pandas as pd
+from semopy import Model, calc_stats
+
+
+data = pd.read_csv("employee.csv")
+data.columns = data.columns.str.strip().str.upper()
+
+#SEM model 
+#	IJ → JC → JE ; INFJ → JC → JE
+desc = """
+# Measurement models 
+JE =~ P1 + P2 + P3 + P4 + P5 + P6 + C1 + C2 + C3 + C4 + C5 + C6 + E1 + E2 + E3 + E4 + E5 + E6
+IJ =~ INT1 + INT2 + INT3 + INT4
+INFJ =~ INF1 + INF2 + INF3 + INF4 + INF5
+JC =~ J1 + J2 + J3 + J4 + J5 + J6 + J7 + J8 + J9 + J10
+
+# mediation path
+JE ~ IJ + INFJ + JC
+JC ~ IJ + INFJ
+"""
+
+# Build and fit the mediation model
+model = Model(desc)
+model.fit(data)
+
+# Parameter estimates
+estimates = model.inspect()
+print("Path coefficients / loadings:\n", estimates)
+
+# Model fit indices
+stats = calc_stats(model)
+print("\nModel fit:\n", stats)
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+# Define nodes
+latent_vars = ['IJ', 'INFJ', 'JC', 'JE']
+observed_vars = {
+    'IJ': ['INT1','INT2','INT3','INT4'],
+    'INFJ': ['INF1','INF2','INF3','INF4','INF5'],
+    'JC': ['J1','J2','J3','J4','J5','J6','J7','J8','J9','J10'],
+    'JE': ['P1','P2','P3','P4','P5','P6','C1','C2','C3','C4','C5','C6','E1','E2','E3','E4','E5','E6']
+}
+
+# Define edges with coefficients
+edges = [
+    ('IJ', 'JC', 0.220),
+    ('INFJ', 'JC', 0.186),
+    ('IJ', 'JE', 0.214),
+    ('INFJ', 'JE', 0.265),
+    ('JC', 'JE', 0.326)
+]
+
+# Create directed graph
+G = nx.DiGraph()
+
+# Add latent nodes
+G.add_nodes_from(latent_vars)
+
+# Add edges with labels
+for src, tgt, coef in edges:
+    G.add_edge(src, tgt, weight=coef)
+
+# Layout
+pos = {
+    'IJ': (0, 2),
+    'INFJ': (2, 2),
+    'JC': (1, 1),
+    'JE': (1, 0)
+}
+
+# Draw nodes
+nx.draw_networkx_nodes(G, pos, node_size=2000, node_color='lightblue')
+nx.draw_networkx_labels(G, pos, font_size=12, font_weight='bold')
+
+# Draw edges
+nx.draw_networkx_edges(G, pos, arrowstyle='->', arrowsize=20, edge_color='gray')
+
+# Draw edge labels (coefficients)
+edge_labels = {(src, tgt): f"{coef:.2f}" for src, tgt, coef in edges}
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=10)
+
+plt.title("SEM Path Diagram (Mediation Model)")
+plt.axis('off')
+plt.show()
+Key insight on structural model:
+•	Both Interpersonal Justice (IJ) and Informational Justice (INFJ) have direct effects on Job Engagement (JE).
+•	Job Characteristics (JC) also have a strong direct effect on Job Engagement.
+•	IJ and INFJ significantly influence JC, indicating a mediated pathway:
+
