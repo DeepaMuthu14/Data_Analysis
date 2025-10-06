@@ -1,0 +1,125 @@
+import numpy as np
+import pandas  as pd
+from scipy.stats import norm
+import seaborn as sns
+import matplotlib.pyplot  as plt
+df_ab_test=pd.read_csv("ab_test_click_data.csv")
+print(df_ab_test.head())
+print(df_ab_test.describe())
+print(df_ab_test.groupby("group").sum("click"))
+palette={0: 'blue', 1: 'yellow'} # 0- no click and 1- click
+plt.figure(figsize=(11,7))
+ax=sns.countplot(x='group', hue='click', data= df_ab_test, palette=palette)
+plt.title('User clicks in A and B groups')
+plt.xlabel('Group')
+plt.ylabel('Count')
+plt.legend(title='click', labels=['No', 'Yes'])
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Plot grouped bar chart
+ax = sns.countplot(data=df_ab_test, x="group", hue="click")
+ax.set_title("A/B Test Results: Clicks by Group", fontsize=14)
+
+
+# Pre-calculate totals for each group
+group_counts = df_ab_test.groupby("group").size()
+
+# Extract values (group, click, count) in the same order as patches
+group_click_counts = (
+    df_ab_test.groupby(["group", "click"])
+    .size()
+    .reset_index(name="count")
+)
+
+# Annotate bars with percentages
+for p, (group, click, count) in zip(ax.patches, group_click_counts.values):
+    total = group_counts.loc[group]
+    percentage = 100 * count / total
+    ax.text(
+        p.get_x() + p.get_width() / 2.,
+        p.get_height() + 0.5,
+        f"{percentage:.1f}%",
+        ha="center"
+    )
+
+plt.show()
+
+alpha = 0.05
+delta =0.1 # 10%
+print("Level of significance is: ", alpha)
+print("Minimum detectable effect is: ", delta)
+
+# Total number of clicks
+# Total number of clicks
+N_con=df_ab_test[df_ab_test ['group'] == 'con'].count()
+N_exp=df_ab_test[df_ab_test ['group'] == 'exp'].count()
+X_con = df_ab_test.groupby('group')['click'].sum().loc['con']
+X_exp = df_ab_test.groupby('group')['click'].sum().loc['exp']
+print("Total number of  clicks in A (control  group):",X_con)
+print("Total number of  clicks in B (experimental  group):",X_exp)
+print("Number of  users in control:", N_con)
+print("Number of users in experimental:", N_exp)
+# p^pooled=#clicks[control] +  #clicks[experimental]/#impressions[control] + #impression[experimental]
+p_con_hat=X_con/N_con
+p_exp_hat=X_exp/N_exp
+print("Click  probabilty in control group:",p_con_hat)
+print("Click  probabilty in control group:",p_exp_hat)
+p_pooled_hat =(X_con+X_exp)/(N_con+N_exp)
+pooled_variance=p_pooled_hat * (1-p_pooled_hat) * (1/N_con + 1/N_exp)
+print("p^pooled:", p_pooled_hat)
+print("pooled_variance", pooled_variance)
+
+#Standard  error
+StdErr=np.sqrt(pooled_variance)
+print("StdErr", StdErr)
+#Ztest
+Test_stat=(p_con_hat - p_exp_hat)/StdErr
+print("Test_statistics:", Test_stat)
+Z_critalvalue=norm.ppf(1-alpha/2)
+print("Z-crital  value:",Z_critalvalue)
+from scipy.stats import norm
+
+Test_stat = 2.1
+pvalue = 2 * norm.sf(abs(Test_stat))
+
+print(f"pvalue: {pvalue.item():.3f}")
+# pvalue<0.05
+confidence_interval=[round((p_exp_hat-p_con_hat)-StdErr*Z_critalvalue, 3), 
+                     round((p_exp_hat-p_con_hat)+StdErr*Z_critalvalue, 3)]
+print("confidence interval:", confidence_interval)
+lower_bound=0.399
+upper_bound=0.426
+if lower_bound >=delta:
+    print("There is a statistical  difference between two groups")
+else:
+    print("There is no statistical  difference between two groups")
+
+
+
+2. Mann Whitney
+
+import numpy as np
+from scipy.stats import norm
+
+# Sample sizes
+n1 = len(group_a)
+n2 = len(group_b)
+N = n1 + n2
+
+
+
+# Compute z-score for effect size r
+mean_U = n1 * n2 / 2
+std_U = np.sqrt(n1 * n2 * (N + 1) / 12)
+z = (stat - mean_U) / std_U
+
+# Effect size r
+r = z / np.sqrt(N)
+
+# Common Language Effect Size (CLES)
+cles = stat / (n1 * n2)
+
+
+print(f"Effect size r = {r:.3f}")
+print(f"Common Language Effect Size (CLES) = {cles:.3f}")
