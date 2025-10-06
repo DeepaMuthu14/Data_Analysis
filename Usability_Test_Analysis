@@ -1,0 +1,67 @@
+import pandas as pd
+from scipy.stats import f_oneway
+
+
+df = pd.read_csv('UT.csv')
+
+cols = ['Task_Duration', 'Number_of_Errors', 'Help_Requests', 'SUS']
+print(df.groupby('Group')[cols].agg(['mean', 'std']))
+
+
+
+# Task Duration: Difference between the groups with a guide and without a guide
+f_task, p_task = f_oneway(df[df['Group']=='A']['Task_Duration'],
+                          df[df['Group']=='B']['Task_Duration'])
+print(f"ANOVA Task Duration: F={f_task:.2f}, p={p_task:.4f}")
+
+
+# SUS Score
+f_sus, p_sus = f_oneway(
+    df[df['Group'] == 'A']['SUS'],
+    df[df['Group'] == 'B']['SUS']
+)
+print(f"ANOVA SUS Score: F={f_sus:.2f}, p={p_sus:.4f}")
+
+# System response
+
+f_sys, p_sys = f_oneway(
+    df[df['Group'] == 'A']['System_Response'],
+    df[df['Group'] == 'B']['System_Response']
+)
+print(f"ANOVA System_Response: F={f_sys:.2f}, p={p_sys:.4f}")
+
+# User interface satisfaction
+f_ui, p_ui =f_oneway(
+    df[df['Group'] == 'A']['UI_Satisfaction'],
+    df[df['Group'] == 'B']['UI_Satisfaction']
+)
+print(f"ANOVA UI_Satisfaction: F={f_ui:.2f}, p={p_ui:.4f}")
+
+# Overall experience
+f_oe, p_oe = f_oneway(
+    df[df['Group'] == 'A']['Overall_Experience'],
+    df[df['Group'] == 'B']['Overall_Experience']
+)
+print(f"ANOVA Overall_Experience: F={f_oe:.2f}, p={p_oe:.4f}")
+
+# Hypothesis: There is a relationship between task duration and SUS score
+import scipy.stats as stats
+from scipy.stats import shapiro
+from scipy.stats import pearsonr
+
+r_value, p_value = pearsonr(df['Task_Duration'], df['SUS'])
+
+print("Correlation between Task Duration and SUS:")
+print(f"r = {r_value:.2f}, p = {p_value:.4f}")
+
+# Hypothesis: There is a relationship between user interface satisfaction and SUS score
+r_value, p_value = pearsonr(df['UI_Satisfaction'], df['SUS'])
+
+print("Correlation between UI_Satisfaction and SUS:")
+print(f"r = {r_value:.2f}, p = {p_value:.4f}")
+
+# Hypothesis: There is a relationship between overall experience and SUS score
+r_value, p_value = pearsonr(df['Overall_Experience'], df['SUS'])
+
+print("Correlation between Overall_Experience and SUS:")
+print(f"r = {r_value:.2f}, p = {p_value:.4f}")
