@@ -65,3 +65,59 @@ r_value, p_value = pearsonr(df['Overall_Experience'], df['SUS'])
 
 print("Correlation between Overall_Experience and SUS:")
 print(f"r = {r_value:.2f}, p = {p_value:.4f}")
+
+# Average error, Time  duration, Help request
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load data from CSV file
+df = pd.read_csv('UT.csv')  # Replace 'UT.csv' with your actual file path if needed
+
+# Ensure the data is loaded correctly
+print(df.head())
+
+# Calculate averages for each group
+group_avg = df.groupby('Group').agg({
+    'Task_Duration': 'mean',
+    'Number_of_Errors': 'mean',
+    'Help_Requests': 'mean'
+}).reset_index()
+
+# Visualize the comparisons between Group A and Group B using bar plots
+plt.figure(figsize=(12, 8))
+
+# Task Duration Comparison
+plt.subplot(2, 2, 1)
+sns.barplot(x='Group', y='Task_Duration', data=group_avg, hue='Group', palette='Blues', legend=False)
+plt.title('Average Task Duration')
+plt.ylabel('Average Time (mins)')
+
+# Number of Errors Comparison
+plt.subplot(2, 2, 2)
+sns.barplot(x='Group', y='Number_of_Errors', data=group_avg, hue='Group', palette='Blues', legend=False)
+plt.title('Average Number of Errors')
+plt.ylabel('Average Number of Errors')
+
+# Help Requests Comparison
+plt.subplot(2, 2, 3)
+sns.barplot(x='Group', y='Help_Requests', data=group_avg, hue='Group', palette='Blues', legend=False)
+plt.title('Average Help Requests')
+plt.ylabel('Average Number of Help Requests')
+
+# Overall Summary Table
+table_data = group_avg[['Group', 'Task_Duration', 'Number_of_Errors', 'Help_Requests']].round(2)
+table_data = table_data.set_index('Group')
+
+# Add the summary table to the plot
+plt.subplot(2, 2, 4)
+plt.axis('off')
+plt.table(cellText=table_data.values, colLabels=table_data.columns, cellLoc='center', loc='center', colColours=['#DCE6F1']*len(table_data.columns))
+
+# Show the plots
+plt.tight_layout()
+plt.show()
+
+# Print summary averages (optional)
+print(f"Group A - Task Duration: {group_avg.iloc[0]['Task_Duration']} mins, Errors: {group_avg.iloc[0]['Number_of_Errors']}, Help Requests: {group_avg.iloc[0]['Help_Requests']}")
+print(f"Group B - Task Duration: {group_avg.iloc[1]['Task_Duration']} mins, Errors: {group_avg.iloc[1]['Number_of_Errors']}, Help Requests: {group_avg.iloc[1]['Help_Requests']}")
