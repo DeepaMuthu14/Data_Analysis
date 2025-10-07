@@ -71,11 +71,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load data from CSV file
-df = pd.read_csv('UT.csv')  # Replace 'UT.csv' with your actual file path if needed
 
-# Ensure the data is loaded correctly
-print(df.head())
+df = pd.read_csv('UT.csv') 
+
+
 
 # Calculate averages for each group
 group_avg = df.groupby('Group').agg({
@@ -105,7 +104,7 @@ sns.barplot(x='Group', y='Help_Requests', data=group_avg, hue='Group', palette='
 plt.title('Average Help Requests')
 plt.ylabel('Average Number of Help Requests')
 
-# Overall Summary Table
+# Summary table
 table_data = group_avg[['Group', 'Task_Duration', 'Number_of_Errors', 'Help_Requests']].round(2)
 table_data = table_data.set_index('Group')
 
@@ -114,10 +113,7 @@ plt.subplot(2, 2, 4)
 plt.axis('off')
 plt.table(cellText=table_data.values, colLabels=table_data.columns, cellLoc='center', loc='center', colColours=['#DCE6F1']*len(table_data.columns))
 
-# Show the plots
+# plots
 plt.tight_layout()
 plt.show()
 
-# Print summary averages (optional)
-print(f"Group A - Task Duration: {group_avg.iloc[0]['Task_Duration']} mins, Errors: {group_avg.iloc[0]['Number_of_Errors']}, Help Requests: {group_avg.iloc[0]['Help_Requests']}")
-print(f"Group B - Task Duration: {group_avg.iloc[1]['Task_Duration']} mins, Errors: {group_avg.iloc[1]['Number_of_Errors']}, Help Requests: {group_avg.iloc[1]['Help_Requests']}")
