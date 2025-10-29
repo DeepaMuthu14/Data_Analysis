@@ -1,0 +1,52 @@
+Ticket_ID,Date,Agent_ID,Plan_Type,Issue_Category,Sub_Category,Description,Priority,Status,Resolution_Time_Days,Channel,Reopened,Product_Feature
+1001,01 July 2025,A001,Pro,Technical Issue,Listing Upload Error,Unable to upload property images,High,Resolved,5,Email,No,Listing Manager
+1002,01 July 2025,A015,Trial,Billing Issue,Invoice Not Received,Didn’t receive invoice for the payment,Medium,Resolved,7,Chat,No,Billing Portal
+1003,02 July 2025,A023,Premium,Feature Request,Dashboard Customization,Request to customize dashboard layout,Low,Open,-,Portal Form,No,Dashboard
+1004,02 July 2025,A010,Trial,Login/Access,Password Reset Failure,Password reset link expired before use,High,Resolved,3,Chat,No,Authentication
+1005,03 July 2025,A005,Premium,Integration,Facebook Ads Sync Failed,Unable to connect Facebook account for ads sync,High,Resolved,9,Email,Yes,Social Integration
+1006,03 July 2025,A018,Pro,Integration,New York Times Connection Error,New York times integration not showing new listings,High,Resolved,8,Portal Form,No,External API
+1007,04 July 2025,A009,Premium,Data Sync,Leads Not Updating,CRM leads not syncing properly,Medium,Resolved,6,Email,No,CRM Integration
+1008,04 July 2025,A027,Pro,Analytics,Dashboard Data Delay,Data on analytics dashboard shows 24-hour delay,Medium,Open,-,Chat,No,Analytics
+1009,05 July 2025,A011,Premium,Technical Issue,Map Not Loading,Map view not loading on property detail page,High,Resolved,4,Chat,No,Listing Manager
+1010,05 July 2025,A022,Trial,Payment,Auto Renewal Failed,Subscription renewal did not go through automatically,Medium,Resolved,6,Email,Yes,Payment Gateway
+1011,06 July 2025,A014,Premium,Notification,Email Campaign Not Delivered,Marketing email campaigns not reaching clients,High,Resolved,4,Portal Form,No,Campaign Manager
+1012,06 July 2025,A008,Pro,Account Settings,Profile Update Error,Unable to update profile information,Medium,Resolved,6,Chat,No,Profile Management
+1013,07 July 2025,A012,Premium,Integration,Google Calendar Sync Failed,Property showing schedules not syncing with Google Calendar,High,Resolved,6,Email,No,Calendar Sync
+1014,07 July 2025,A006,Trial,Login/Access,2FA Code Not Received,Unable to login,High,Resolved,4,Chat,No,Authentication
+1015,08 July 2025,A020,Pro,Technical Issue,Property Load Slow,Property listing page takes 10+ seconds to load,Medium,Open,-,Email,No,Listing Manager
+1016,08 July 2025,A019,Trial,Feature Request,Add Property Notes,Request to add private notes to listings,Low,Open,-,Portal Form,No,Listing Manager
+1017,09 July 2025,A017,Premium,Billing Issue,Double Charge,Charged twice for monthly subscription,High,Resolved,5,Email,Yes,Billing Portal
+1018,09 July 2025,A013,Trial,Data Sync,Contact Info Missing,Some contacts not appearing after sync,Medium,Resolved,2,Chat,No,CRM Integration
+1019,10 July 2025,A002,Pro,Integration,MLS Feed Error,MLS feed updates delayed,High,Resolved,3,Email,No,MLS Integration
+1020,10 July 2025,A004,Premium,Technical Issue,Broken Property Link,Shared property link gives 404 error,Medium,Resolved,4,Email,No,Listing Manager
+1021,11 July 2025,A007,Pro,Analytics,Report Export Failure,Cannot export report as PDF,Medium,Resolved,2,Chat,No,Analytics
+1022,11 July 2025,A025,Premium,Integration,YouTube Video Not Embedding,Property video not embedding properly,Medium,Resolved,4,Portal Form,No,Social Integration
+1023,12 July 2025,A016,Trial,Account Settings,Email ID Change Failed,Unable to change registered email,Medium,Resolved,5,Email,No,Profile Management
+1024,12 July 2025,A021,Pro,Payment,Transaction Declined,Payment failed during checkout,High,Resolved,5,Chat,No,Payment Gateway
+1025,13 July 2025,A024,Premium,Integration,LinkedIn Connection Timeout,Error connecting LinkedIn business page,High,Resolved,6,Email,No,Social Integration
+1026,13 July 2025,A028,Premium,Notification,SMS Not Triggered,SMS alert not sent for new leads,Medium,Resolved,5,Chat,No,Notification System
+1027,14 July 2025,A030,Pro,Analytics,Inaccurate Lead Count,Dashboard showing mismatched lead count,Medium,Resolved,2,Email,No,Analytics
+1028,14 July 2025,A009,Premium,Technical Issue,Image Not Displaying,Uploaded image not appearing in listing,Medium,Resolved,4,Chat,No,Listing Manager
+1029,15 July 2025,A011,Premium,Integration,Zapier Workflow Broken,Zapier automation stopped working,High,Resolved,4,Portal Form,Yes,External API
+1030,15 July 2025,A010,Pro,Billing Issue,Refund Delay,Refund for canceled plan not processed,Medium,Open,-,Email,No,Billing Portal
+1031,16 July 2025,A018,Premium,Analytics,Metric Not Refreshing,Traffic metrics not refreshing on time,Medium,Resolved,3,Chat,No,Analytics
+1032,16 July 2025,A014,Trial,Technical Issue,Duplicate Listing Created,System creates duplicate listing when saving,Medium,Resolved,5,Portal Form,No,Listing Manager
+1033,17 July 2025,A012,Pro,Integration,Social media Listing Delay,Listings take 24h to appear on social media,Medium,Resolved,5,Email,No,External API
+1034,17 July 2025,A022,Trial,Notification,Lead Email Delay,Delay in receiving lead email notifications,Medium,Resolved,5,Chat,No,Notification System
+1035,18 July 2025,A013,Premium,Technical Issue,Unable to convert images into video format,Clicking analytics button shows blank page,High,Resolved,4,Email,No,Analytics
+1036,18 July 2025,A005,Trial,Payment,Invoice Mismatch,Amount on invoice differs from payment,High,Resolved,5,Email,No,Billing Portal
+1037,19 July 2025,A001,Pro,Integration,Facebook Token Expired,Ads integration failed due to expired token,Medium,Resolved,6,Chat,No,Social Integration
+1038,19 July 2025,A021,Trial,Login/Access,Session Timeout,System logs out automatically every 10 mins,Medium,Resolved,5,Chat,No,Authentication
+1039,20 July 2025,A006,Premium,Data Sync,Listing Info Missing,Some listing fields not syncing to site,High,Open,-,Email,No,CRM Integration
+1040,20 July 2025,A020,Pro,Feature Request,Add Multi-User Login,Request to add multiple team logins,Low,Open,-,Portal Form,No,Account Settings
+1041,21 July 2025,A016,Trial,Technical Issue,Unresponsive Buttons,Some buttons unresponsive after update,Medium,Resolved,4,Chat,No,Dashboard
+1042,21 July 2025,A019,Pro,Payment,Renewal Date Incorrect,Wrong renewal date displayed on account,Medium,Resolved,5,Email,No,Payment Gateway
+1043,22 July 2025,A027,Premium,Analytics,Conversion Rate Missing,Dashboard not showing conversion rate metric,Medium,Resolved,7,Email,No,Analytics
+1044,22 July 2025,A008,Trial,Account Settings,Password Strength Issue,Password change,Low,Resolved,4,Chat,No,Authentication
+1045,23 July 2025,A024,Premium,Notification,Push Notification Failure,Mobile push notifications not working,High,Resolved,5,Chat,Yes,Notification System
+1046,23 July 2025,A018,Pro,Integration,Calendar Not Syncing,Events not appearing in calendar,Medium,Resolved,5,Email,No,Calendar Sync
+1047,24 July 2025,A025,Pro,Payment,Card Declined,Credit card declined for renewal,High,Resolved,4,Chat,No,Payment Gateway
+1048,24 July 2025,A017,Premium,Technical Issue,Slow Dashboard Load,Dashboard takes too long to load,High,Open,-,Email,No,Dashboard
+1049,25 July 2025,A009,Pro,Data Sync,Old Data Showing,Recent updates not reflecting in leads list,Medium,Resolved,3,Chat,No,CRM Integration
+1050,25 July 2025,A028,Pro,Integration,Invalid API Response,Received malformed response from Google Calendar API,Medium,Resolved,2,Email,No,External API
+1051,26 July 2025,A030,Premium,Notification,Email Alerts Duplicated,Getting same lead alert several times,Low,Resolved,4,Chat,No,Notification System
