@@ -4,20 +4,7 @@ Usability testing
 Support_ticket analysis
 <img width="752" height="452" alt="image" src="https://github.com/user-attachments/assets/4cca8f45-b6d5-43ba-ac06-7dc452f539c9" />
 
-Row Labels	Count of Issue_Category
-Premium	20
-Chat	6
-Email	10
-Portal Form	4
-Pro	18
-Chat	7
-Email	9
-Portal Form	2
-Trial	13
-Chat	8
-Email	3
-Portal Form	2
-Grand Total	51
+
 <img width="309" height="337" alt="image" src="https://github.com/user-attachments/assets/a6552459-c1c4-42ad-912c-1ec3a43d596f" />
 Row Labels	Count of Resolution_Time_Days
 Premium	20
