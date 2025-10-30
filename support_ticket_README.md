@@ -15,7 +15,7 @@
 
 **Method**
 
-| IF(B2>=8,"High",IF(B2>=4,"Medium","Low"))|
+
 | **Severity Weight (avg)** | = ((High × 3) + (Medium × 2) + (Low × 1)) / Frequency |
 | **Impact Score** | = Frequency × Severity Weight (avg) |
 
