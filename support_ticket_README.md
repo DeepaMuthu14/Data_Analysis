@@ -25,3 +25,14 @@
 - **Feature Requests** are frequent but low in severity.  
 - Focus on **Integration** and **Payment** for root cause analysis.
 
+
+
+**Support_ticket analysis**
+
+<img width="752" height="452" alt="image" src="https://github.com/user-attachments/assets/4cca8f45-b6d5-43ba-ac06-7dc452f539c9" />
+
+
+
+<img width="752" height="452" alt="image" src="https://github.com/user-attachments/assets/694497d4-b0bf-468f-b80e-36e0b310b1f6" />
+
+
