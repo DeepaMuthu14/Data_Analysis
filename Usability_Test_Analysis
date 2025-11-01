@@ -10,9 +10,10 @@ print(df.groupby('Group')[cols].agg(['mean', 'std']))
 
 
 # Task Duration: Difference between the groups with a guide and without a guide
-f_task, p_task = f_oneway(df[df['Group']=='A']['Task_Duration'],
-                          df[df['Group']=='B']['Task_Duration'])
-print(f"ANOVA Task Duration: F={f_task:.2f}, p={p_task:.4f}")
+t_task, p_task = ttest_ind(df[df['Group']=='A']['Task_Duration'],
+                           df[df['Group']=='B']['Task_Duration'],
+                           equal_var=False)
+print(f"T-test Task Duration: t={t_task:.2f}, p={p_task:.4f}")
 
 
 # SUS Score
