@@ -16,34 +16,30 @@ t_task, p_task = ttest_ind(df[df['Group']=='A']['Task_Duration'],
 print(f"T-test Task Duration: t={t_task:.2f}, p={p_task:.4f}")
 
 
-# SUS Score
-f_sus, p_sus = f_oneway(
-    df[df['Group'] == 'A']['SUS'],
-    df[df['Group'] == 'B']['SUS']
-)
-print(f"ANOVA SUS Score: F={f_sus:.2f}, p={p_sus:.4f}")
+t_sus, p_sus = ttest_ind(df[df['Group']=='A']['SUS'],
+                         df[df['Group']=='B']['SUS'],
+                         equal_var=False)
+print(f"T-test SUS Score: t={t_sus:.2f}, p={p_sus:.4f}")
 
 # System response
-
-f_sys, p_sys = f_oneway(
-    df[df['Group'] == 'A']['System_Response'],
-    df[df['Group'] == 'B']['System_Response']
-)
-print(f"ANOVA System_Response: F={f_sys:.2f}, p={p_sys:.4f}")
+t_sys, p_sys = ttest_ind(df[df['Group']=='A']['System_Response'],
+                         df[df['Group']=='B']['System_Response'],
+                         equal_var=False)
+print(f"T-test System Response: t={t_sys:.2f}, p={p_sys:.4f}")
 
 # User interface satisfaction
-f_ui, p_ui =f_oneway(
-    df[df['Group'] == 'A']['UI_Satisfaction'],
-    df[df['Group'] == 'B']['UI_Satisfaction']
-)
-print(f"ANOVA UI_Satisfaction: F={f_ui:.2f}, p={p_ui:.4f}")
+t_ui, p_ui = ttest_ind(df[df['Group']=='A']['UI_Satisfaction'],
+                       df[df['Group']=='B']['UI_Satisfaction'],
+                       equal_var=False)
+print(f"T-test UI Satisfaction: t={t_ui:.2f}, p={p_ui:.4f}")
 
 # Overall experience
-f_oe, p_oe = f_oneway(
+t_oe, p_oe = ttest_ind(
     df[df['Group'] == 'A']['Overall_Experience'],
-    df[df['Group'] == 'B']['Overall_Experience']
+    df[df['Group'] == 'B']['Overall_Experience'],
+    equal_var=False  # Welch's t-test
 )
-print(f"ANOVA Overall_Experience: F={f_oe:.2f}, p={p_oe:.4f}")
+print(f"T-test Overall_Experience: t={t_oe:.2f}, p={p_oe:.4f}")
 
 # Hypothesis: There is a relationship between task duration and SUS score
 import scipy.stats as stats
